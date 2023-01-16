@@ -1,38 +1,31 @@
 #include <iostream>
 #include <vector>
-#include <algorithm>
-#include <string>
-#include <cmath>
-#include <map>
-#include <queue>
-#include <iomanip>
-#include <unordered_map>
-#include <vector>
-#include <stack>
-#include <utility>
-#include <numeric>
+#include <cstring>
 using namespace std;
+const int MOD = 1e9 + 7;
+int n, m, a[100005], memo[100005][5];
 
-int main(){
-    ios_base::sync_with_stdio(false);
-    cin.tie(0);
-    
-    int MOD = 1e9 + 7;
-    int n, a[100005], dp[100005][5];
-
-    cin >> n;
-    for (int i = 1; i <= n; i++) cin >> a[i];
-    dp[0][0] = 1;
-    for (int i = 1; i <= n; i++) {
-        for (int j = 0; j <= 4; j++) {
-            dp[i][j] = dp[i-1][j];
-            if (j >= 1 && a[i] >= 1) dp[i][j] = (dp[i][j] + dp[i-1][j-1]) % MOD;
-            if (j >= 2 && a[i] >= 2) dp[i][j] = (dp[i][j] + dp[i-1][j-2]) % MOD;
-            if (j >= 3 && a[i] >= 3) dp[i][j] = (dp[i][j] + dp[i-1][j-3]) % MOD;
-            if (j >= 4 && a[i] >= 4) dp[i][j] = (dp[i][j] + dp[i-1][j-4]) % MOD;
+int dp(int i, int j) {
+    if (i == n) {
+        return (j == 0);
+    }
+    if (memo[i][j] != -1) {
+        return memo[i][j];
+    }
+    int ans = 0;
+    for (int k = 1; k <= min(a[i], 4); k++) {
+        if (j >= k) {
+            ans = (ans + dp(i + 1, j - k)) % MOD;
         }
     }
-    cout << dp[n][0] << endl;
-    
+    memo[i][j] = ans;
+    return ans;
+}
+
+int main() {
+    cin >> n >> m;
+    for (int i = 0; i < n; i++) cin >> a[i];
+    memset(memo, -1, sizeof memo);
+    cout << dp(0, m) << endl;
     return 0;
 }
