@@ -11,6 +11,7 @@
 #include <stack>
 #include <utility>
 #include <numeric>
+#include <cstring>
 using namespace std;
 
 int main(){
