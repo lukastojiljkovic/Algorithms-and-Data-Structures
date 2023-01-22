@@ -67,7 +67,7 @@ void generate(string s, int i) {
         s[i] = '0';
         generate(s, i+1);
         s[i] = '1';
-        if (s[i-1] != '1') {
+        if (s[i-1] != '1') {    // MSM DA OVDE PRAVI PROBLEM
             generate(s, i+1);
         }
     }
