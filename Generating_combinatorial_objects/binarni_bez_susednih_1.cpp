@@ -14,9 +14,24 @@
 #include <cstring>
 using namespace std;
 
+void print (const string& s) {
+    int j = 0, i, k;
+    k = s.size();
+    while(k != 0) {
+        if(!((s[i] != s[i-1]) && (s[i] == '1' || s[i-1] == '1'))) {
+            j++;
+        }
+        i++;
+        k--;
+    }
+    if(j == s.size()) {
+        cout << s << endl;
+    }
+}
+
 void generate(string s, int i) {
     if(i == s.size()) {
-        cout << s << endl;
+        print(s);
         return;
     }
     if(s[i] == '.') {
