@@ -47,8 +47,8 @@ void print (const string& s) {
     int j = 0, i, k;
     k = s.size();
     while(k != 0) {
-        if(!((s[i] != s[i-1]) && (s[i] == '1' || s[i-1] == '1'))) {
-            j++;
+        if(!((s[i] != s[i-1]) && (s[i] == '1' || s[i-1] == '1'))) { // zastita da moze da ispisuje 
+            j++;                                                    // susedne nule ali ne i jedinice
         }
         i++;
         k--;
@@ -67,7 +67,7 @@ void generate(string s, int i) {
         s[i] = '0';
         generate(s, i+1);
         s[i] = '1';
-        if (s[i-1] != '1') {    // MSM DA OVDE PRAVI PROBLEM
+        if (s[i-1] != '1') {    // mislim da ovde pravi problem sa pristupom
             generate(s, i+1);
         }
     }
