@@ -55,7 +55,7 @@ using namespace std;
 vector<int> unosNiza() {
     int n; cin >> n; // unos velicine niza
     vector<int> a(n);
-    for(int i = 0; i < n; i++) { // unos niza
+    for(int i = 0; i < n; i++) { // unos elemenata niza
         cin >> a[i];
     }
     return a;
