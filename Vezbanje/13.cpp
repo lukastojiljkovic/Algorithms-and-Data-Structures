@@ -58,13 +58,13 @@ void print(const vector<int> &v) { // print combination to standard output
 
 void process (vector<int> &v, int i, int n) {
     int k = v.size();
-    if(i == k) {
+    if(i == k) { // whole row is filled, so we print
         print(v);
         return;
     }
     int beginning = i == 0 ? 1 : v[i-1]+1;
     int end = n - k + i + 1;
-    for (int j = beginning; j <= end; ++j) {
+    for (int j = beginning; j <= end; ++j) { 
         v[i] = j;
         process(v, i+1, n);
     }
