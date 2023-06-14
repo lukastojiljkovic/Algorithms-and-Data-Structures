@@ -59,9 +59,6 @@
 using namespace std;
 
 bool rastojanje(int x, int m, vector<int>& location, int n) {
-   int l = location[0];
-   int d = location[n - 1] - l;
-
    m--;
    int lastLocation = location[0];
    for(int i = 1; i < n && m > 0; i++) {
