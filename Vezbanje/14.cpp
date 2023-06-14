@@ -73,18 +73,8 @@ bool rastojanje(int x, int m, vector<int>& location, int n) {
    return m == 0;
 }
 
-int main(int argc, char const *argv[]) {
-   ios_base::sync_with_stdio(false);
-   cin.tie(0);
-   
-   int n, l;
-   cin >> n >> l;
-   vector<int> location(l);
-   for(int i = 0; i < l; i++) {
-      cin >> location[i];
-   }
+void resenje(int n, int l, vector<int>& location) {
    sort(location.begin(), location.end());
-
    int g = 1;
    int d = location[l - 1];
    int resenje = -1;
@@ -99,6 +89,19 @@ int main(int argc, char const *argv[]) {
       }
    }
    cout << resenje << endl;
+}
 
-    return 0;
+int main(int argc, char const *argv[]) {
+   ios_base::sync_with_stdio(false);
+   cin.tie(0);
+   
+   int n, l;
+   cin >> n >> l;
+   vector<int> location(l);
+   for(int i = 0; i < l; i++) {
+      cin >> location[i];
+   }
+   resenje(n, l, location);
+
+   return 0;
 }
